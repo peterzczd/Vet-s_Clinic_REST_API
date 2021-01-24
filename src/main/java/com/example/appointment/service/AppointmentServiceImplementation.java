@@ -20,10 +20,6 @@ public class AppointmentServiceImplementation implements AppointmentService {
         this.appointmentRepository = appointmentRepository;
     }
 
-    /*public List<Appointment> findBynameOfDoctor(String nameOfDoctor) {
-        return appointmentRepository.findBynameOfDoctor(nameOfDoctor);
-    }
-*/
     @Override
     public List<Appointment> findAll() {
         return appointmentRepository.findAll();

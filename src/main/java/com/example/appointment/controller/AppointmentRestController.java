@@ -22,7 +22,7 @@ public class AppointmentRestController {
     public AppointmentRestController(AppointmentService appointmentService) {
         this.appointmentService = appointmentService;
     }
-    /** GET request to return all appointments based on a date range and ordered by price **/
+    /** GET request to return all appointments based on a date range and selected name **/
     @RequestMapping(method = RequestMethod.GET)
     public List<Appointment> findByDateRangeSortedByPrice(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam("startDate") LocalDate startDate,
                                                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam("endDate") LocalDate endDate, @RequestParam("nameOfDoctor") String nameOfDoctor) {
@@ -35,11 +35,6 @@ public class AppointmentRestController {
         return appointmentService.findAll();
     }
 
-    /** GET request to return all appointments based on a doctor's name **/
-    /*@RequestMapping(method = RequestMethod.GET)
-    public List<Appointment> findBynameOfDoctor(@RequestParam("nameOfDoctor") String nameOfDoctor) {
-        return appointmentService.findBynameOfDoctor(nameOfDoctor);
-    }*/
 
     /** POST request to add new appointments **/
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
