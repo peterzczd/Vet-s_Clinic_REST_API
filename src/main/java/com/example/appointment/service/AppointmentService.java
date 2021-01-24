@@ -4,16 +4,17 @@ import com.example.appointment.model.Appointment;
 
 
 import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+
 
 public interface AppointmentService {
 
     List<Appointment> findAll();
 
-    List<Appointment> findBynameOfDoctor(String nameOfDoctor);
-
     Appointment create(Appointment appointment);
 
     Appointment updateStatus(Long appointmentId, Appointment appointment);
+
+    List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate, String nameOfDoctor);
 
 }

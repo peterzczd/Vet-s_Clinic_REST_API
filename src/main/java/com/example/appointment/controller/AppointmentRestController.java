@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @RestController
 @RequestMapping("/api/v1/appointments")
@@ -21,6 +22,12 @@ public class AppointmentRestController {
     public AppointmentRestController(AppointmentService appointmentService) {
         this.appointmentService = appointmentService;
     }
+    /** GET request to return all appointments based on a date range and ordered by price **/
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Appointment> findByDateRangeSortedByPrice(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam("startDate") LocalDate startDate,
+                                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam("endDate") LocalDate endDate, @RequestParam("nameOfDoctor") String nameOfDoctor) {
+        return appointmentService.findByDateRangeSortedByPrice(startDate, endDate, nameOfDoctor);
+    }
 
     /** GET request to return all appointments **/
     @RequestMapping(path = "/", method = RequestMethod.GET)
@@ -29,10 +36,10 @@ public class AppointmentRestController {
     }
 
     /** GET request to return all appointments based on a doctor's name **/
-    @RequestMapping(method = RequestMethod.GET)
+    /*@RequestMapping(method = RequestMethod.GET)
     public List<Appointment> findBynameOfDoctor(@RequestParam("nameOfDoctor") String nameOfDoctor) {
         return appointmentService.findBynameOfDoctor(nameOfDoctor);
-    }
+    }*/
 
     /** POST request to add new appointments **/
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")

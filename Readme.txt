@@ -48,4 +48,4 @@ http://localhost:8080/api/v1/appointments?nameOfDoctor=/*here provide doctor's n
 3)  allows to list appointments of certain doctor for given day
 GET request to return specific appointments
 
-http://localhost:PORT/api/v1/appointments?nameOfDoctor=Linus Torvalds
+http://localhost:8080/api/v1/appointments?startDate=2021-01-23&endDate=2021-02-15&nameOfDoctor=Linus%20Torvalds
