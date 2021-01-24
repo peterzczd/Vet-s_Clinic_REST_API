@@ -42,6 +42,9 @@ Pass Body as JSON:
 { "status": "Cancelled", "patientId": "1111",
 "patientPIN": "2356"}
 
+Then you can see cancelled appointment:
+http://localhost:8080/api/v1/appointments?nameOfDoctor=/*here provide doctor's name*/
+
 3)  allows to list appointments of certain doctor for given day
 GET request to return specific appointments
 
